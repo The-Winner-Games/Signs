@@ -4,23 +4,16 @@ local CollapsibleTitledSection = require(targetFolder.CollapsibleTitledSection)
 local CustomTextButton = require(targetFolder.CustomTextButton)
 local CustomTextLabel = require(targetFolder.CustomTextLabel)
 local GuiUtilities = require(targetFolder.GuiUtilities)
---local ImageButtonWithText = require(targetFolder.ImageButtonWithText)
 local LabeledCheckbox = require(targetFolder.LabeledCheckbox)
 local LabeledMultiChoice = require(targetFolder.LabeledMultiChoice)
-local LabeledRadioButton = require(targetFolder.LabeledRadioButton)
 local LabeledSlider = require(targetFolder.LabeledSlider)
 local LabeledTextInput = require(targetFolder.LabeledTextInput)
-local RbxGui = require(targetFolder.RbxGui)
---local StatefulImageButton = require(targetFolder.StatefulImageButton)
 local ScrollingFrame = require(targetFolder.VerticalScrollingFrame)
 local VerticallyScalingListFrame = require(targetFolder.VerticallyScalingListFrame)
 
 local Color = require(script.Color)
 local FontFace = require(script.FontFace)
 local GuiObjectPart = require(script.GuiObjectPart)
-local LineJoinMode = require(script.LineJoinMode)
-local TextXAlignment = require(script.TextXAlignment)
-local TextYAlignment = require(script.TextYAlignment)
 
 local PluginGui = {}
 
@@ -144,7 +137,7 @@ function PluginGui:newPluginGui(widgetGui)
 		Color, -- choices array
 		11 -- the starting index of the selection
 	)
-	if (GuiUtilities:ShouldUseIconsForDarkerBackgrounds()) then
+	if GuiUtilities:ShouldUseIconsForDarkerBackgrounds() then
 		colorTextChoice:SetSelectedIndex(1)
 	end
 	colorTextChoice:GetFrame().Parent = fontCollapse:GetContentsFrame()
@@ -322,7 +315,7 @@ function PluginGui:newPluginGui(widgetGui)
 end
 
 function PluginGui:destoryPluginGui(widgetGui)
-	for i,v in pairs(widgetGui:GetChildren()) do
+	for v in pairs(widgetGui:GetChildren()) do
 		if v:IsA("GuiObject") then
 			v:Destroy()
 		end

@@ -30,10 +30,10 @@ function LabeledMultiChoiceClass.new(nameSuffix, labelText, choices, initChoiceI
 
 	self._buttonObjsByIndex = {}
 
-	if (not initChoiceIndex ) then 
+	if not initChoiceIndex then 
 		initChoiceIndex = 1
 	end
-	if (initChoiceIndex > #choices) then 
+	if initChoiceIndex > #choices then 
 		initChoiceIndex = #choices
 	end
 
@@ -61,7 +61,7 @@ function LabeledMultiChoiceClass:SetSelectedIndex(selectedIndex)
 		self._buttonObjsByIndex[i]:SetValue(i == selectedIndex)
 	end
 
-	if (self._valueChangedFunction) then 
+	if self._valueChangedFunction then 
 		self._valueChangedFunction(self._selectedIndex)
 	end
 end
@@ -122,7 +122,7 @@ function LabeledMultiChoiceClass:_AddRadioButton(parentFrame, index, choiceData)
 	radioButtonObj:SetValueChangedFunction(function(value)
 		-- If we notice the button going from off to on, and it disagrees with 
 		-- our current notion of selection, update selection.
-		if (value and self._selectedIndex ~= index) then 
+		if value and self._selectedIndex ~= index then 
 			self:SetSelectedIndex(index)
 		end
 	end)
